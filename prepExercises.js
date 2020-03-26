@@ -218,13 +218,52 @@ function firstandlast(n){
 //    ***** 
 //     *** 
 //      *
-function stars(n){  // number of odd desired lines
+function stars(n){    //number of greatest row
 	let i = 1;
-	let result = '';
-	while(i <= n){
-		result += 
+	let x = 0;
+	let y;
+	let m;
+	let str = '';
+	while(i <= n){	
+		m = 1;
+		while(m < n + 2 - i) {
+			str += ' ';
+			m++;
+		}
+		y = 1;
+		while(y < x + 2) {
+			str += '*';
+			y++;
+		}
+		x = y;
+		i++;
+		str += '\n ';
 	}
 
+	while(i > 2){
+		m = 0;
+		while(m <= n + 2 - i) {
+			str += ' ';
+			m++;
+		}
+		y = 1;
+		while(y < x - 2) {
+			str += '*';
+			y++;
+		}
+		x = y;
+		i--;
+		str += '\n ';
+	}
+return str
 }
 // 3. Write a program that reads a character for playing the game of Rock-Paper-Scissors. If the character entered by the user is not one of 'P', 'R' or 'S', 
 //the program keeps on prompting the user to enter a new character.
+function game(){
+	let x = window.prompt("Enter a number name: ");
+    x.toLoweCase;
+	while(x !== 'r' && x !=='p' && x !== 's'){
+		return game()
+    }
+	return 'Character is correct';
+}
