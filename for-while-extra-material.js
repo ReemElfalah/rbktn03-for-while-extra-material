@@ -24,7 +24,7 @@ function longestWord(arr){
 //    The input values are always positive.
 
 const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
-	while(distanceToPump <= mpg * fuelLeft)
+	while (distanceToPump <= mpg * fuelLeft)
 		return true;
 	return false;
 };
@@ -106,8 +106,8 @@ function removeEveryOther(arr) {
 // The numbers could be positive or negative and the first non-consecutive could be either too!
 
 function firstNonConsecutive (arr) {
-	for(let i = 1; i < arr.length; i++) {
-		if(arr[i + 1] - arr[i] !== 1)
+	for (let i = 1; i < arr.length; i++) {
+		if (arr[i + 1] - arr[i] !== 1)
 			return arr[i + 1];
 	}
 	return null;
@@ -124,8 +124,8 @@ function firstNonConsecutive (arr) {
 
 // Return True if yes, False otherwise :)
 
-function hero(bullets, dragons){
-	while(bullets >= dragons * 2)
+function hero(bullets, dragons) {
+	while (bullets >= dragons * 2)
 		return true;
 	return false;
 }
@@ -145,25 +145,43 @@ function hero(bullets, dragons){
 // Make sure you cover the cases where certain words do not show up with correct capitalization. For example, getDrinkByProfession("pOLitiCIaN") 
 // should still return "Your tax dollars".
 
-function getDrinkByProfession(param){
+function getDrinkByProfession(param) {
+	param = param.toLowerCase();
 	switch(param) {
-		case "Jabroni":
-			return("Patron Tequila");
+		case "jabroni":
+			return "Patron Tequila";
 			break;
-		case "School Counselor":
-    	return("Anything with Alcohol");
+		case "school counselor":
+    	return "Anything with Alcohol";
 			break;
+		case "programmer":
+    	return "Hipster Craft Beer";
+			break;
+		case "bike Gang Member":
+    	return "Moonshine";
+			break;
+		case "politician":
+    	return "Moonshine";
+			break;
+		case "rapper":
+    	return "Cristal";
+			break;
+		default:
+			return "Beer";
+			break
 }
 }
 
 // It's too hot, and they can't even…
-// One hot summer day Pete and his friend Billy decided to buy watermelons. They chose the biggest crate. They rushed home, dying of thirst, and decided to divide their loot, however they faced a hard problem.
-
-// Pete and Billy are great fans of even numbers, that's why they want to divide the number of watermelons in such a way that each of the two parts consists of an even number of watermelons. However, it is not obligatory that the parts are equal.
+// One hot summer day Pete and his friend Billy decided to buy watermelons. They chose the biggest crate. They rushed home, dying of thirst, 
+//and decided to divide their loot, however they faced a hard problem.
+// Pete and Billy are great fans of even numbers, that's why they want to divide the number of watermelons in such a way that each of the two parts consists of an 
+//even number of watermelons. However, it is not obligatory that the parts are equal.
 
 // Example: the boys can divide a stack of 8 watermelons into 2+6 melons, or 4+4 melons.
 
-// The boys are extremely tired and want to start their meal as soon as possible, that's why you should help them and find out, whether they can divide the fruits in the way they want. For sure, each of them should get a part of positive weight.
+// The boys are extremely tired and want to start their meal as soon as possible, that's why you should help them and find out, whether they can divide the fruits in 
+//the way they want. For sure, each of them should get a part of positive weight.
 
 // Task
 // Given an integral number of watermelons w, check whether Pete and Billy can divide the melons so that each of them gets an even amount.
@@ -175,25 +193,32 @@ function getDrinkByProfession(param){
 // divide(5) === false // 5 = 2 + 3
 // divide(6) === true  // 6 = 2 + 4
 
-function divide(){
-	// your Code HERE
+function divide(w){
+	while(w > 2 && w % 2 === 0)
+		return true;
+	return false
 }
 
 
 
 // Triple Trouble
-// Create a function that will return a string that combines all of the letters of the three inputed strings in groups. Taking the first letter of all of the inputs and grouping them next to each other. Do this for every letter, see example below!
+// Create a function that will return a string that combines all of the letters of the three inputed strings in groups. 
+//Taking the first letter of all of the inputs and grouping them next to each other. Do this for every letter, see example below!
 
 // E.g. Input: "aa", "bb" , "cc" => Output: "abcabc"
 
 // Note: You can expect all of the inputs to be the same length.
 
-function tripleTrouble(one, two, three){
-  //Solution
+function tripleTrouble(one, two, three) {
+	result = '';
+  for (let i = 0; i < one.length; i++)
+  	result += one.slice(i, i + 1) + two.slice(i, i + 1) + three.slice(i, i + 1)
+  return result;
 }
 
 
-// You are given an array with positive numbers and a number N. You should find the N-th power of the element in the array with the index N. If N is outside of the array, then return -1. 
+// You are given an array with positive numbers and a number N. You should find the N-th power of the element in the array with the index N. 
+//If N is outside of the array, then return -1. 
 // Don't forget that the first element has the index 0.
 
 // Let's look at a few examples:
@@ -202,7 +227,9 @@ function tripleTrouble(one, two, three){
 // array = [1, 2, 3] and N = 3, but N is outside of the array, so the result is -1.
 
 function index(array, n){
-  //your code here
+  while(n < array.length)
+  	return Math.pow(array[n],2);
+  return -1;
 }
 
 
@@ -219,7 +246,15 @@ function index(array, n){
 // Zero alone is fine, don't worry about it. Poor guy anyway
 
 function noBoringZeros(n) {
-  // your code
+  arr = num.toString(n).split('')
+  for(let i = are.length; i > -1; i--){
+  	if(arr[i] === 0)
+  		arr.pop();
+  	if(arr[i] !== 0)
+  		i = -1;
+  }
+  return arr;
+
 }
 
 // There was a test in your class and you passed it. Congratulations!
