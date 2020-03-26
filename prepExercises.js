@@ -260,7 +260,7 @@ return str
 // 3. Write a program that reads a character for playing the game of Rock-Paper-Scissors. If the character entered by the user is not one of 'P', 'R' or 'S', 
 //the program keeps on prompting the user to enter a new character.
 function game(){
-	let x = window.prompt("Enter a number name: ");
+	let x = window.prompt("Enter a character: ");
     x.toLoweCase;
 	while(x !== 'r' && x !=='p' && x !== 's'){
 		return game()
