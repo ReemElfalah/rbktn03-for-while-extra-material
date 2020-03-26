@@ -6,9 +6,15 @@ hint: strings also have the .length property - i.e `"starburst".length` is 9
 
 // YOUR CODE GOES HERE
 
-function (arr){
-
+function longestWord(arr){
+	max = arr[0];
+	for (let i = 1; i < str.length; i++) {
+		if (arr[i].length > max.length)
+			max = str[i];
+	}
+	return max;
 }
+
 
 // Will you make it?
 // You were camping with your friends far away from home, but when it's time to go back,
@@ -18,6 +24,9 @@ function (arr){
 //    The input values are always positive.
 
 const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
+	while(distanceToPump <= mpg * fuelLeft)
+		return true;
+	return false;
 };
 
 
@@ -33,26 +42,55 @@ const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
 // The first argument can be an empty string
 // The second string argument will always be of length 1
 
-function strCount(str, letter){ 
+function strCount(str, letter) { 
+	let array = str.split('')
+	let count = 0;
+	for (let i = 0; i < array.length; i++) {
+		if (array[i] === letter)
+			count ++;
+	}
+	return count;
 }
 
 
 
-// At the annual family gathering, the family likes to find the oldest living family member’s age and the youngest family member’s age and calculate the difference between them.
-
+// At the annual family gathering, the family likes to find the oldest living family member’s age and the youngest family member’s age and calculate 
+//the difference between them.
 // You will be given an array of all the family members' ages, in any order. 
 // The ages will be given in whole numbers, so a baby of 5 months, will have an ascribed ‘age’ of 0. 
 // Return a new array with [youngest age, oldest age, difference between the youngest and oldest age].
-
-function differenceInAges(ages){
+function maximum(array) {
+	let max = array[0];
+	for (let i = 1; i < array.length; i++) {
+		if (array[i] > max)
+			max = array[i];
+	}
+	return max;
+}
+function minimum(array) {
+	let min = array[0];
+	for (let i = 1; i < array.length; i++) {
+		if (array[i] < min)
+			min = array[i];
+	}
+	return min;
+}
+function differenceInAges(ages) {
+ let min = minimum(ages);
+ let max = maximum(ages);
+ let dif = max - min;
+ return [min, max, dif];
 }
 
 
 
 // Take an array and remove every second element out of that array. Always keep the first element and start removing with the next element.
 
-function removeEveryOther(arr){
-  //your code here
+function removeEveryOther(arr) {
+  for (let i = 1; i < arr.length; i++){
+  	arr.splice(i,1);
+  }
+  return arr;
 }
 
 // Your task is to find the first element of an array that is not consecutive.
@@ -68,21 +106,28 @@ function removeEveryOther(arr){
 // The numbers could be positive or negative and the first non-consecutive could be either too!
 
 function firstNonConsecutive (arr) {
-
+	for(let i = 1; i < arr.length; i++) {
+		if(arr[i + 1] - arr[i] !== 1)
+			return arr[i + 1];
+	}
+	return null;
 }
 
 // A hero is on his way to the castle to complete his mission. However, 
 
 // he's been told that the castle is surrounded with a couple of powerful dragons! each dragon takes 2 bullets to be defeated, 
 
-// our hero has no idea how many bullets he should carry.. Assuming he's gonna grab a specific given number of bullets and move forward to fight another specific given number of dragons, 
+// our hero has no idea how many bullets he should carry.. Assuming he's gonna grab a specific given number of bullets and move forward to fight another 
+//specific given number of dragons, 
 
 // will he survive?
 
 // Return True if yes, False otherwise :)
 
 function hero(bullets, dragons){
-//Get Coding!
+	while(bullets >= dragons * 2)
+		return true;
+	return false;
 }
 
 
@@ -97,11 +142,18 @@ function hero(bullets, dragons){
 //  "Rapper"	"Cristal" 
 //  *anything else*	"Beer" 
 // Note: anything else is the default case: if the input to the function is not any of the values in the table, then the return value should be "Beer."
-
-// Make sure you cover the cases where certain words do not show up with correct capitalization. For example, getDrinkByProfession("pOLitiCIaN") should still return "Your tax dollars".
+// Make sure you cover the cases where certain words do not show up with correct capitalization. For example, getDrinkByProfession("pOLitiCIaN") 
+// should still return "Your tax dollars".
 
 function getDrinkByProfession(param){
-
+	switch(param) {
+		case "Jabroni":
+			return("Patron Tequila");
+			break;
+		case "School Counselor":
+    	return("Anything with Alcohol");
+			break;
+}
 }
 
 // It's too hot, and they can't even…
