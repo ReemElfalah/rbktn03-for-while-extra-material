@@ -218,43 +218,44 @@ function firstandlast(n){
 //    ***** 
 //     *** 
 //      *
-function stars(n){    //number of greatest row
+function stars(n){ 
 	let i = 1;
 	let x = 0;
 	let y;
 	let m;
 	let str = '';
-	while(i <= n){	
-		m = 1;
-		while(m < n + 2 - i) {
-			str += ' ';
-			m++;
+	if ( n % 2 !== 0) {
+		while(i <= Math.round(n / 2)){	
+			m = 1;
+			while(m < n + 2 - i) {
+				str += ' ';
+				m++;
+			}
+			y = 1;
+			while(y < x + 2) {
+				str += '*';
+				y++;
+			}
+			x = y;
+			i++;
+			str += '\n ';
 		}
-		y = 1;
-		while(y < x + 2) {
-			str += '*';
-			y++;
-		}
-		x = y;
-		i++;
-		str += '\n ';
+		while(i > 2){
+			m = 0;
+			while(m <= n + 2 - i) {
+				str += ' ';
+				m++;
+			}
+			y = 1;
+			while(y < x - 2) {
+				str += '*';
+				y++;
+			}
+			x = y;
+			i--;
+			str += '\n ';
 	}
-
-	while(i > 2){
-		m = 0;
-		while(m <= n + 2 - i) {
-			str += ' ';
-			m++;
-		}
-		y = 1;
-		while(y < x - 2) {
-			str += '*';
-			y++;
-		}
-		x = y;
-		i--;
-		str += '\n ';
-	}
+}
 return str
 }
 // 3. Write a program that reads a character for playing the game of Rock-Paper-Scissors. If the character entered by the user is not one of 'P', 'R' or 'S', 
