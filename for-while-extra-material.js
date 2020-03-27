@@ -24,9 +24,13 @@ function longestWord(arr){
 //    The input values are always positive.
 
 const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
-	while (distanceToPump <= mpg * fuelLeft)
-		return true;
-	return false;
+	while (fuelLeft > 0){
+		distanceToPump -= mpg 
+		fuelLeft --;
+	}
+	if (distanceToPump > 0)
+		return false;
+	return true;
 };
 
 
@@ -87,10 +91,10 @@ function differenceInAges(ages) {
 // Take an array and remove every second element out of that array. Always keep the first element and start removing with the next element.
 
 function removeEveryOther(arr) {
-  for (let i = 1; i < arr.length; i++){
-  	arr.splice(i,1);
-  }
-  return arr;
+	for (let i = 1; i < arr.length; i++){
+		arr.splice(i,1);
+	}
+	return arr;
 }
 
 // Your task is to find the first element of an array that is not consecutive.
@@ -125,7 +129,11 @@ function firstNonConsecutive (arr) {
 // Return True if yes, False otherwise :)
 
 function hero(bullets, dragons) {
-	while (bullets >= dragons * 2)
+	while (bullets > 0 && dragons > 0) {
+		bullets -= 2;
+		dragons --;
+	}
+	if (dragons === 0)
 		return true;
 	return false;
 }
@@ -152,19 +160,19 @@ function getDrinkByProfession(param) {
 			return "Patron Tequila";
 			break;
 		case "school counselor":
-    	return "Anything with Alcohol";
+		return "Anything with Alcohol";
 			break;
 		case "programmer":
-    	return "Hipster Craft Beer";
+			return "Hipster Craft Beer";
 			break;
 		case "bike Gang Member":
-    	return "Moonshine";
+		return "Moonshine";
 			break;
 		case "politician":
-    	return "Moonshine";
+		return "Moonshine";
 			break;
 		case "rapper":
-    	return "Cristal";
+		return "Cristal";
 			break;
 		default:
 			return "Beer";
@@ -194,9 +202,14 @@ function getDrinkByProfession(param) {
 // divide(6) === true  // 6 = 2 + 4
 
 function divide(w){
-	while(w > 2 && w % 2 === 0)
+	if (w === 2)
+		return false;
+	while(w > 2){
+		w -= 2;
+	}
+	if (w === 0)
 		return true;
-	return false
+	return false;
 }
 
 
@@ -211,9 +224,9 @@ function divide(w){
 
 function tripleTrouble(one, two, three) {
 	result = '';
-  for (let i = 0; i < one.length; i++)
-  	result += one.slice(i, i + 1) + two.slice(i, i + 1) + three.slice(i, i + 1)
-  return result;
+	for (let i = 0; i < one.length; i++)
+		result += one.slice(i, i + 1) + two.slice(i, i + 1) + three.slice(i, i + 1)
+	return result;
 }
 
 
@@ -227,9 +240,13 @@ function tripleTrouble(one, two, three) {
 // array = [1, 2, 3] and N = 3, but N is outside of the array, so the result is -1.
 
 function index(array, n){
-  while(n < array.length)
-  	return Math.pow(array[n],2);
-  return -1;
+	let i = 0;
+	while (i < array.length){
+		if (i === n) 
+			return Math.pow(array[n],2);
+		i++;
+	}
+	return -1;
 }
 
 
@@ -246,15 +263,18 @@ function index(array, n){
 // Zero alone is fine, don't worry about it. Poor guy anyway
 
 function noBoringZeros(n) {
-  arr = num.toString(n).split('')
-  for(let i = are.length; i > -1; i--){
-  	if(arr[i] === 0)
-  		arr.pop();
-  	if(arr[i] !== 0)
-  		i = -1;
-  }
-  return arr;
-
+	arr = n.toString().split('')
+	i = arr.length - 1;
+	if (arr[i] === '0') {
+		while (arr[i] === '0') {
+  		arr.splice(i,1);
+			i--;
+		}
+		arr = arr.join('');
+		arr = Number(arr);
+		return arr;
+	}
+	return n 
 }
 
 // There was a test in your class and you passed it. Congratulations!
@@ -268,5 +288,12 @@ function noBoringZeros(n) {
 // Your points are not included in the array of your class's points. For calculating the average point you may add your point to the given array!
 
 function betterThanAverage(classPoints, yourPoints) {
-  // Your code here
+	let total = 0;
+	classPoints.push(yourPoints);
+  for (let i = 0; i < classPoints.length; i++) {
+  	total += classPoints[i];
+  }
+  if (yourPoints > total / classPoints.length)
+  	return true;
+  return false;
 }
